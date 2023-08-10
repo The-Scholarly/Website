@@ -7,75 +7,63 @@
 	<link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body class="is-preload">
-
-	<!-- Wrapper -->
-		<div id="wrapper">
+	<div id="wrapper">
+		<div id="main">
+				
+			<!-- Header -->
+			<div id="header"></div>
+			<script src="assets/js/jquery.min.js"></script>
+			<script>
+				$(function () {
+				$("#header").load("header.html");
+				});
+			</script>
 			
-			<!-- Main -->
-				<div id="main">
-					<!-- Header -->
-					<div id="header"></div>
-					<script src="assets/js/jquery.min.js"></script>
-					<script>
-						$(function () {
-						$("#header").load("header.html");
-						});
-					</script>
+			<div class="inner">
+
+				<!-- Content -->
+				<section>
+					<header class="main"><h1>Biosciences</h1></header>
 					
-					<div class="inner">
-
-						
-						<!-- Content -->
-						<section>
-							<header class="main">
-								<h1>Biosciences</h1>
-							</header>
-							
-							<div class="posts">
-								<article>
-									<a href="samplepaperbio.html" class="image"><img src="images/pic01.jpg" alt="" /></a>
-								    <h3>Article A</h3>
-									<p>Desc1.&nbsp;</p>
-									<ul class="actions">
-										<li><a href="samplepaperbio.html" class="button">More</a></li>
-									</ul>
-								</article>
-								<article>
-									<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
-								  <h3>Article B</h3>
-									<p>Desc2.</p>
-									<ul class="actions">
-										<li><a href="#" class="button">More</a></li>
-									</ul>
-								</article>
-							</div>
-
-							<span class="image main"></span>
-							
-							<h2></p>
-							
-
-						</section>
-
+					<div class="posts">
+						<article>
+							<a href="samplepaperbio.html" class="image"><img src="images/pic01.jpg" alt="" /></a>
+						    <h3>Article A</h3>
+							<p>Desc1.&nbsp;</p>
+							<ul class="actions">
+								<li><a href="samplepaperbio.html" class="button">More</a></li>
+							</ul>
+						</article>
+						<article>
+							<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
+						  <h3>Article B</h3>
+							<p>Desc2.</p>
+							<ul class="actions">
+								<li><a href="#" class="button">More</a></li>
+							</ul>
+						</article>
 					</div>
-				</div>
-
-				<!-- Sidebar -->
-				<div id="sidebar"></div>
-				<script src="assets/js/jquery.min.js"></script>
-				<script>
-					$(function () {
-						$("#sidebar").load("sidebar.html");
-					});
-				</script>
-
+					<span class="image main"></span>
+					<h2></p>
+				</section>
+			</div>
 		</div>
 
-	<!-- Scripts -->
+		<!-- Sidebar -->
+		<div id="sidebar"></div>
 		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
+		<script>
+			$(function () {
+				$("#sidebar").load("sidebar.html");
+			});
+		</script>
+	</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
 </body>
 
