@@ -46,6 +46,33 @@
 			</div>
 		</div>
 
+		<!-- Login Popup -->
+        <div id="login-popup" class="popup">
+            <div class="popup-content">
+                <h2>Login</h2>
+                <form id="login-form">
+                    <input type="text" id="login-email" placeholder="Email" required><br><br>
+                    <input type="password" id="login-password" placeholder="Password" required><br><br>
+                    <button type="button" onclick="login()">Login</button>
+                    <button type="button" onclick="closePopup('login-popup')">Cancel</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Signup Popup -->
+        <div id="signup-popup" class="popup">
+            <div class="popup-content">
+                <h2>Sign Up</h2>
+                <form id="signup-form">
+                    <input type="text" id="signup-name" placeholder="Name" required><br><br>
+                    <input type="text" id="signup-email" placeholder="Email" required><br><br>
+                    <input type="password" id="signup-password" placeholder="Password" required><br><br>
+                    <button type="button" onclick="signup()">Sign Up</button>
+                    <button type="button" onclick="closePopup('signup-popup')">Cancel</button>
+                </form>
+            </div>
+        </div>
+
 		<!-- Sidebar -->
 		<div id="sidebar"></div>
 		<script>
@@ -64,6 +91,54 @@
 <script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
 
+<script>
+function openPopup(id) {
+document.getElementById(id).style.display = "block";
+}
 
+function closePopup(id) {
+document.getElementById(id).style.display = "none";
+}
+
+function signup() {
+const name = document.getElementById("signup-name").value;
+const email = document.getElementById("signup-email").value;
+const password = document.getElementById("signup-password").value;
+
+fetch('/register', {
+	method: 'POST',
+	headers: {'Content-Type': 'application/x-www-form-urlencoded',},
+	body: `name=${name}&email=${email}&password=${password}`,})
+.then(response => response.json())
+.then(data => {
+	if (data.message) {
+		alert(data.message);
+		closePopup('signup-popup');
+	} else {
+		alert(data.error);
+	}
+});
+}
+
+function login() {
+const email = document.getElementById("login-email").value;
+const password = document.getElementById("login-password").value;
+
+fetch('/login', {
+	method: 'POST',
+	headers: {'Content-Type': 'application/x-www-form-urlencoded',},
+	body: `email=${email}&password=${password}`,})
+.then(response => response.json())
+.then(data => {
+	if (data.message) {
+		alert(data.message);
+		closePopup('login-popup');
+	} else {
+		alert(data.error);
+	}
+});
+}
+
+</script>
 
 </body>
