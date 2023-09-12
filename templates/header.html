@@ -1,0 +1,119 @@
+<a href="index.html" class="logo"><strong>Scholarly</strong> publishing website</a>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Sign in Popup -->
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <button id="closeButton">X</button>
+        <form id="loginForm" action="login" method="post">
+            <label for="loginEmail">Email:</label>
+            <input type="email" id="loginEmail" name="email" required><br><br>
+
+            <label for="loginPassword">Password:</label>
+            <input type="password" id="loginPassword" name="password" required><br><br>
+
+            <button type="button" onclick="loginUser()">Login</button>
+        </form>
+    </div>
+</div>
+
+<!-- Sign up Popup -->
+<div id="signupPopup" class="popup">
+    <div class="popup-content">
+        <button id="signupCloseButton">X</button>
+        <h2>Sign up</h2>
+
+        <form id="registrationForm" action="/register" method="post">
+            <label for="regEmail">Email:</label>
+            <input type="email" id="regEmail" name="reg_email" required><br><br>
+
+            <label for="regName">Name:</label>
+            <input type="text" id="regName" name="reg_name" required><br><br>
+
+            <label for="regPassword">Password:</label>
+            <input type="password" id="regPassword" name="reg_password" required><br><br>
+
+            <button type="button" onclick="registerUser()">Register</button>
+        </form>
+        <p id="signupMessage"></p>
+    </div>
+</div>
+
+<ul class="icons">
+    <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+    <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+    <li><a href="#" class="icon brands fa-linkedin"><span class="label">Medium</span></a></li>
+    <!-- Place the button at the very right -->
+    <li><span class="button-wrapper">
+        <button onclick="openPopup('login-popup')">Signin</button>
+        <button onclick="openPopup('signup-popup')">Sign Up</button>
+        </span></li>
+</ul>
+
+
+<script>
+    $(function () {
+        $("#popupButton").click(function () {
+            $("#popup").addClass("visible");
+        });
+
+        $("#closeButton").click(function () {
+            $("#popup").removeClass("visible");
+        });
+    });
+</script>
+
+<script>
+    function openPopup(popupId) {
+        var popup = document.getElementById(popupId);
+        popup.style.display = 'block';
+    }
+
+    function closePopup(popupId) {
+        var popup = document.getElementById(popupId);
+        popup.style.display = 'none';
+    }
+
+    var signInButton = document.getElementById('SignInButton');
+    var signUpButton = document.getElementById('SignUpButton');
+    var closeButton = document.getElementById('closeButton');
+    var signupCloseButton = document.getElementById('signupCloseButton');
+
+    signInButton.addEventListener('click', function () {
+        openPopup('popup');
+    });
+
+    signUpButton.addEventListener('click', function () {
+        openPopup('signupPopup');
+    });
+
+    closeButton.addEventListener('click', function () {
+        closePopup('popup');
+    });
+
+    signupCloseButton.addEventListener('click', function () {
+        closePopup('signupPopup');
+    });
+</script>
+
+<script>
+    function loginUser() {
+        const email = $('#loginEmail').val();
+        const password = $('#loginPassword').val();
+
+        $.post('/', { email, password, action: 'login' }, function (data) {
+            $('#loginMessage').text(data.message);
+        });
+    }
+
+    function registerUser() {
+        const email = $('#regEmail').val();
+        const name = $('#regName').val();
+        const password = $('#regPassword').val();
+
+        $.post('/', { email, name, password, action: 'register' }, function (data) {
+            $('#registrationMessage').text(data.message);
+        });
+    }
+</script>
